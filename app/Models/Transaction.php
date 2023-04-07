@@ -17,4 +17,24 @@ class Transaction extends Model
     const AMOUNT = 'amount';
     const DESCRIPTION = 'description';
     const DELETED_AT = 'deleted_at';
+
+    protected $fillable = [
+        self::ID,
+        self::USER_ID,
+        self::PAYMENT_ID,
+        self::ORDER_ID,
+        self::TYPE_ENUM,
+        self::AMOUNT,
+        self::DESCRIPTION,
+        self::DELETED_AT,
+    ];
+
+    protected $casts = [
+        self::USER_ID     => 'int',
+        self::PAYMENT_ID  => 'int',
+        self::ORDER_ID    => 'int',
+        self::TYPE_ENUM   => 'string',
+        self::AMOUNT      => 'int',
+        self::DESCRIPTION => 'string',
+    ];
 }
