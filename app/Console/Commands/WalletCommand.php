@@ -2,12 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\Enumerations\GatewayEnums;
 use App\Enumerations\TransactionsTypeEnum;
-use App\Models\Payment;
 use App\Services\Wallet\Wallet;
 use Illuminate\Console\Command;
-use PHPUnit\TextUI\XmlConfiguration\Group;
 
 class WalletCommand extends Command
 {
