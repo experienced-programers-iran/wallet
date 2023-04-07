@@ -2,8 +2,12 @@
 
 namespace App\Console\Commands;
 
-use App\Services\Wallet;
+use App\Enumerations\GatewayEnums;
+use App\Enumerations\TransactionsTypeEnum;
+use App\Models\Payment;
+use App\Services\Wallet\Wallet;
 use Illuminate\Console\Command;
+use PHPUnit\TextUI\XmlConfiguration\Group;
 
 class WalletCommand extends Command
 {
@@ -28,7 +32,21 @@ class WalletCommand extends Command
      */
     public function handle()
     {
-        echo Wallet::getCredit();
+        $wallet = new Wallet();
+
+        // Get the current user balance
+        $wallet->balance();
+
+        // Get balance for a special user
+        $wallet->user(1)
+            ->balance();
+
+        // Get incoming amount balance for a special user
+        $wallet->user(1)
+            ->typeEnum([
+                TransactionsTypeEnum::INCREASE_CREDIT
+            ])
+            ->balance();
 
         return Command::SUCCESS;
     }
