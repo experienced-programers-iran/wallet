@@ -17,4 +17,24 @@ class Payment extends Model
     const REFERENCE_ID = 'reference_id';
     const VERIFY_AT = 'verified_at';
     const DELETED_AT = 'deleted_at';
+
+    protected $fillable = [
+        self::ID,
+        self::USER_ID,
+        self::GATEWAY_ENUM,
+        self::AMOUNT,
+        self::AUTHORITY_ID,
+        self::REFERENCE_ID,
+        self::VERIFY_AT,
+        self::DELETED_AT,
+    ];
+
+    protected $casts = [
+        self::USER_ID      => 'int',
+        self::GATEWAY_ENUM => 'string',
+        self::AMOUNT       => 'int',
+        self::AUTHORITY_ID => 'string',
+        self::REFERENCE_ID => 'string',
+        self::VERIFY_AT    => 'datetime',
+    ];
 }
